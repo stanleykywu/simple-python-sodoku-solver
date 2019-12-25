@@ -32,7 +32,7 @@ def complete_grid(brd):
 def find_empty(brd):
     for i in range(len(brd)):
         for j in range(len(brd[0])):
-            if board[i][j] == 0:
+            if brd[i][j] == 0:
                 return i, j  # row, col
 
     return None
