@@ -9,6 +9,7 @@ board = [[7, 8, 0, 4, 0, 0, 1, 2, 0],
          [0, 4, 9, 2, 0, 6, 0, 0, 7]]
 
 
+# Solves a board for one possible solution using backtracking
 def complete_grid(brd):
     find = find_empty(brd)
 
@@ -29,6 +30,7 @@ def complete_grid(brd):
     return False
 
 
+# Finds the next empty square in a sudoku puzzle (marked by 0) and returns its position
 def find_empty(brd):
     for i in range(len(brd)):
         for j in range(len(brd[0])):
@@ -38,6 +40,7 @@ def find_empty(brd):
     return None
 
 
+# Determines if placing the given number in the given position is a valid placement
 def check_valid(brd, num, pos):
     # Check row
     for i in range(len(brd[0])):
@@ -61,6 +64,7 @@ def check_valid(brd, num, pos):
     return True
 
 
+# Prints a board with horizontal and vertical lines for display
 def print_board(brd):
     for i in range(len(brd)):
 
