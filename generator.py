@@ -1,7 +1,7 @@
 import numpy as np
-import random as rand
 
 
+# Creates a randomly solved (all numbers placed) sudoku board
 def create_random_solve_board():
     b = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
          [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -19,6 +19,7 @@ def create_random_solve_board():
     return b
 
 
+# Randomly removes numbers while ensuring that puzzle can only be solved with one unique solution
 def remove_numbers(brd):
     all_pos = [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 8),
                (1, 0), (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8),
@@ -41,6 +42,7 @@ def remove_numbers(brd):
             brd[pos[0]][pos[1]] = placeholder
 
 
+# Run through all possible numbers and returns a list of all that can be placed in the given position
 def get_possibilities(brd, pos):
     total = list()
 
@@ -51,6 +53,7 @@ def get_possibilities(brd, pos):
     return total
 
 
+# Solves a board for one possible solution using backtracking
 def complete_grid(brd):
     find = find_empty(brd)
     if not find:
@@ -70,6 +73,7 @@ def complete_grid(brd):
     return False
 
 
+# Finds the next empty square in a sudoku puzzle (marked by 0) and returns its position
 def find_empty(brd):
     for i in range(len(brd)):
         for j in range(len(brd[0])):
@@ -79,6 +83,7 @@ def find_empty(brd):
     return None
 
 
+# Creates random permutations of the first 9 counting digits, then places them in a diagonal line on an empty board
 def permute_section(brd):
     section = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     sec_1 = np.random.permutation(section)
@@ -90,6 +95,7 @@ def permute_section(brd):
     complete_sections(brd, sec_3, 6, 6)
 
 
+# Places permutations of 9 digits in a the given row and columns
 def complete_sections(brd, sec, counter, disp):
     for i in range(9):
         if i % 3 == 0 and i != 0:
@@ -97,6 +103,7 @@ def complete_sections(brd, sec, counter, disp):
         brd[counter][i % 3 + disp] = sec[i]
 
 
+# Determines if placing the given number in the given position is a valid placement
 def check_valid(brd, num, pos):
     # Check row
     for i in range(len(brd[0])):
@@ -120,6 +127,7 @@ def check_valid(brd, num, pos):
     return True
 
 
+# Prints a board with horizontal and vertical lines for display
 def print_board(brd):
     for i in range(len(brd)):
 
@@ -135,6 +143,7 @@ def print_board(brd):
                 print(brd[i][j])
             else:
                 print(str(brd[i][j]) + " ", end="")
+
 
 newboard = create_random_solve_board()
 print_board(newboard)
