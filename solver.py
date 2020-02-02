@@ -8,6 +8,7 @@ board = [[7, 8, 0, 4, 0, 0, 1, 2, 0],
          [1, 2, 0, 0, 0, 7, 4, 0, 0],
          [0, 4, 9, 2, 0, 6, 0, 0, 7]]
 
+# tester
 
 # Solves a board for one possible solution using backtracking
 def complete_grid(brd):
